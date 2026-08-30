@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}{% if title != 'Mercado de Eldoria' %} · Mercado de Eldoria{% endif %}</title>
+  <meta name="description" content="Loja de itens digitais do universo de Eldoria.">
+  <meta property="og:title" content="{{ title }} · Mercado de Eldoria">
+  <meta property="og:description" content="Equipe sua jornada em Eldoria com itens digitais selecionados.">
+  <meta property="og:image" content="{{ url_for('static', filename='og.png', _external=True) }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ url_for('store.home') }}">Mercado de Eldoria</a>
+      <nav class="desktop-nav" aria-label="Principal">
+        <a class="{{ 'active' if request.path == '/' else '' }}" href="{{ url_for('store.home') }}">Início</a>
+        <a class="{{ 'active' if request.path.startswith('/loja') or request.path.startswith('/produto') else '' }}" href="{{ url_for('store.shop') }}">Loja</a>
+        <a class="{{ 'active' if request.path.startswith('/como-funciona') else '' }}" href="{{ url_for('store.how_it_works') }}">Como funciona</a>
+        <a class="{{ 'active' if request.path.startswith('/suporte') else '' }}" href="{{ url_for('store.support') }}">Suporte</a>
+      </nav>
+      <div class="header-actions">
+        <a class="bag-link" href="{{ url_for('store.cart') }}" aria-label="Bolsa do Aventureiro com {{ cart_count }} itens">Bolsa{% if cart_count %}<span>{{ cart_count }}</span>{% endif %}</a>
+        <a class="button button-outline account-link" href="{{ url_for('store.account') }}">Minha conta</a>
+        <details class="mobile-menu"><summary aria-label="Abrir menu">Menu</summary><nav>
+          <a href="{{ url_for('store.home') }}">Início</a><a href="{{ url_for('store.shop') }}">Loja</a>
+          <a href="{{ url_for('store.how_it_works') }}">Como funciona</a><a href="{{ url_for('store.support') }}">Suporte</a>
+          <a href="{{ url_for('store.account') }}">Minha conta</a>
+        </nav></details>
+      </div>
+    </div>
+  </header>
+  <div class="flash-stack" aria-live="polite">
+    {% for category, message in get_flashed_messages(with_categories=true) %}<div class="flash flash-{{ category }}">{{ message }}</div>{% endfor %}
+  </div>
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <div class="container footer-grid"><div><p class="brand">Mercado de Eldoria</p><p>Mercado de Eldoria comercializa itens digitais destinados ao jogo.</p></div>
+      <nav aria-label="Rodapé"><a href="{{ url_for('store.shop') }}">Loja</a><a href="{{ url_for('store.how_it_works') }}">Como funciona</a><a href="{{ url_for('store.support') }}">Suporte</a><a href="{{ url_for('store.terms') }}">Termos de uso</a><a href="{{ url_for('store.privacy') }}">Privacidade</a></nav>
+    </div><div class="copyright">© {{ current_year }} Mercado de Eldoria. Todos os direitos reservados.</div>
+  </footer>
+</body>
+</html>
+

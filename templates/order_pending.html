@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block content %}<section class="section container narrow"><div class="success-state"><div class="success-icon">✓</div><p class="eyebrow">Pedido registrado</p><h1>{{ order_number }}</h1><p>Total: <strong>{{ total|brl }}</strong></p><p>O pedido foi criado, mas ainda não está pago. A integração com o provedor de pagamentos deverá ser configurada antes de aceitar transações reais.</p><a class="button" href="{{ url_for('store.account') }}">Acompanhar pedido</a></div></section>{% endblock %}
+

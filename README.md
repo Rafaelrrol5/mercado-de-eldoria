@@ -26,4 +26,3 @@ flask --app run.py create-admin
 ```
 
 O checkout registra o pedido no banco, mas não cobra dinheiro. Para aceitar pagamentos reais, conecte um provedor certificado no backend e valide webhooks antes de marcar pedidos como pagos.
-

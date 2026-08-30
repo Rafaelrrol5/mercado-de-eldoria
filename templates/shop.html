@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block content %}
+<section class="page-hero container"><p class="eyebrow">Catálogo do reino</p><h1>Loja de Eldoria</h1><p>Encontre equipamentos, artefatos e itens para fortalecer sua jornada.</p></section>
+<section class="container shop-layout" data-catalog data-initial-offers="{{ 'true' if initial_offers else 'false' }}">
+  <aside class="filters"><div class="field"><label for="search">Buscar itens</label><input id="search" data-search type="search" placeholder="Buscar itens..."></div>
+    <div class="field"><label for="category">Categoria</label><select id="category" data-category>{% for value in categories %}<option value="{{ value }}" {{ 'selected' if initial_offers and value == 'Ofertas' else '' }}>{{ value }}</option>{% endfor %}</select></div>
+    <div class="field"><label for="rarity">Raridade</label><select id="rarity" data-rarity>{% for value in rarities %}<option>{{ value }}</option>{% endfor %}</select></div>
+    <div class="field"><label for="class">Classe</label><select id="class" data-class>{% for value in classes %}<option>{{ value }}</option>{% endfor %}</select></div>
+    <div class="field"><label for="price">Preço máximo <span data-price-label>R$ 30,00</span></label><input id="price" data-price type="range" min="500" max="3000" step="100" value="3000"></div>
+    <button class="button button-ghost button-block" type="button" data-clear>Limpar filtros</button>
+  </aside>
+  <div><div class="catalog-toolbar"><p><strong data-count>{{ products|length }}</strong> itens encontrados</p><label>Ordenação <select data-sort><option value="relevant">Mais relevantes</option><option value="sold">Mais vendidos</option><option value="low">Menor preço</option><option value="high">Maior preço</option><option value="recent">Mais recentes</option></select></label></div>
+    <div class="product-grid" data-product-grid>{% for product in products %}{% include '_product_card.html' %}{% endfor %}</div><div class="empty-state" data-empty hidden><h2>Nenhum artefato encontrado</h2><p>Tente ajustar ou limpar os filtros.</p></div>
+  </div>
+</section>{% endblock %}
+

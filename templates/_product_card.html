@@ -1,0 +1,9 @@
+<article class="product-card rarity-{{ product.rarity|lower|replace('é','e') }}" data-product-card data-name="{{ product.name|lower }}" data-category="{{ 'Ofertas' if product.offer else product.category }}|{{ product.category }}" data-rarity="{{ product.rarity }}" data-class="{{ product.class_name }}" data-price="{{ product.price_cents }}" data-sales="{{ product.sales_rank }}" data-created="{{ product.created_rank }}" data-offer="{{ 1 if product.offer else 0 }}">
+  <a class="product-art" href="{{ url_for('store.product_detail', slug=product.slug) }}" style="background-position: {{ product.image_position }}" aria-label="Ver {{ product.name }}"></a>
+  <div class="product-content"><div class="product-meta"><span>{{ product.category }}</span><span class="rarity-badge">{{ product.rarity }}</span></div>
+    <h2><a href="{{ url_for('store.product_detail', slug=product.slug) }}">{{ product.name }}</a></h2><p>{{ product.short_description }}</p>
+    <div class="product-footer"><strong>{{ product.price_cents|brl }}</strong><a class="text-link" href="{{ url_for('store.product_detail', slug=product.slug) }}">Ver item</a></div>
+    <form action="{{ url_for('store.add_to_cart') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="slug" value="{{ product.slug }}"><input type="hidden" name="next" value="{{ request.full_path }}"><button class="button button-block" type="submit">Adicionar à bolsa</button></form>
+  </div>
+</article>
+

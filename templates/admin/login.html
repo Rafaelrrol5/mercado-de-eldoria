@@ -1,0 +1,2 @@
+{% extends 'admin/base.html' %}{% block admin_content %}<section class="auth-section"><form class="auth-card" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><p class="eyebrow">Acesso restrito</p><h1>Administração</h1><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div><div class="field"><label for="password">Senha</label><input id="password" name="password" type="password" required></div><button class="button button-block" type="submit">Entrar</button></form></section>{% endblock %}
+
