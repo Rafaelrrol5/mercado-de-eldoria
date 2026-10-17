@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}{% if title != 'Mercado de Eldoria' %} · Mercado de Eldoria{% endif %}</title>
+  <meta name="description" content="Loja de itens digitais do universo de Eldoria.">
+  <meta property="og:title" content="{{ title }} · Mercado de Eldoria">
+  <meta property="og:description" content="Equipe sua jornada em Eldoria com itens digitais selecionados.">
+  <meta property="og:image" content="{{ url_for('static', filename='og.png', _external=True) }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css',v='release-181') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='realm.css',v='release-181') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='navigation.css',v='release-181') }}">
+  <script defer src="{{ url_for('static', filename='app.js',v='release-181') }}"></script>
+  <script defer src="{{ url_for('static', filename='realm.js',v='release-181') }}"></script>
+  <script defer src="{{ url_for('static', filename='navigation.js',v='release-181') }}"></script>
+<script defer src="{{ url_for('static',filename='live-data.js',v='release-181') }}"></script><link rel="stylesheet" href="{{ url_for('static',filename='auth-ui.css',v='release-181') }}"><script defer src="{{ url_for('static',filename='auth-ui.js',v='release-181') }}"></script><link rel="stylesheet" href="{{ url_for('static',filename='responsive.css',v='release-181') }}"></head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ url_for('store.home') }}">Mercado de Eldoria</a>
+      <nav class="desktop-nav" aria-label="Principal">
+        <a class="{{ 'active' if request.path == '/' else '' }}" href="{{ url_for('store.home') }}">Início</a>
+        <button class="nav-trigger" data-navigation="game" aria-expanded="false" aria-controls="realm-navigation">O jogo <span aria-hidden="true">⌄</span></button>
+        <button class="nav-trigger" data-navigation="shop" aria-expanded="false" aria-controls="realm-navigation">Loja <span aria-hidden="true">⌄</span></button>
+        <a class="{{ 'active' if request.path.startswith('/como-funciona') else '' }}" href="{{ url_for('store.how_it_works') }}">Como funciona</a>
+        <a class="{{ 'active' if request.path.startswith('/suporte') else '' }}" href="{{ url_for('store.support') }}">Suporte</a>
+      </nav>
+      <div class="header-actions">
+        <a class="bag-link" href="{{ url_for('store.cart') }}" aria-label="Bolsa do Aventureiro com {{ cart_count }} itens">Bolsa{% if cart_count %}<span>{{ cart_count }}</span>{% endif %}</a>
+        <a class="button button-outline account-link" href="{{ url_for('store.account') }}">Minha conta</a>
+        <details class="mobile-menu"><summary aria-label="Abrir menu">Menu</summary><nav>
+          <a href="{{ url_for('store.home') }}">Início</a>
+          <button class="nav-trigger" data-navigation="game" aria-expanded="false" aria-controls="realm-navigation">O jogo <span aria-hidden="true">⌄</span></button>
+          <button class="nav-trigger" data-navigation="shop" aria-expanded="false" aria-controls="realm-navigation">Loja <span aria-hidden="true">⌄</span></button>
+          <a href="{{ url_for('store.how_it_works') }}">Como funciona</a><a href="{{ url_for('store.support') }}">Suporte</a>
+          <a href="{{ url_for('store.account') }}">Minha conta</a>
+        </nav></details>
+      </div>
+    </div>
+    <div class="mega-navigation" id="realm-navigation" hidden>
+      <div class="container mega-layout">
+        <div class="mega-sidebar"><p class="eyebrow">Explore Eldoria</p><div role="tablist" aria-label="Categorias" aria-orientation="vertical">
+          <button id="tab-world" role="tab" aria-controls="panel-world" aria-selected="true" data-nav-group="game">O universo</button>
+          <button id="tab-download" role="tab" aria-controls="panel-download" aria-selected="false" tabindex="-1" data-nav-group="game">Download</button>
+          <button id="tab-news" role="tab" aria-controls="panel-news" aria-selected="false" tabindex="-1" data-nav-group="game">Novidades</button>
+          <button id="tab-market" role="tab" aria-controls="panel-market" aria-selected="false" tabindex="-1" data-nav-group="shop">Mercado</button>
+          <button id="tab-gear" role="tab" aria-controls="panel-gear" aria-selected="false" tabindex="-1" data-nav-group="shop">Equipamentos</button>
+          <button id="tab-offers" role="tab" aria-controls="panel-offers" aria-selected="false" tabindex="-1" data-nav-group="shop">Ofertas e pacotes</button>
+        </div><a class="mega-help" href="{{ url_for('store.support') }}">Precisa de ajuda? →</a></div>
+        <div class="mega-content">
+          <button class="mega-close" aria-label="Fechar navegação">×</button>
+          <section id="panel-world" role="tabpanel" aria-labelledby="tab-world"><p class="eyebrow">Sua história começa aqui</p><h2>Descubra o reino.</h2><a class="mega-entry" href="{{ url_for('store.game') }}"><span class="mega-thumb world-thumb" aria-hidden="true"></span><span><strong>Crônicas de Eldoria</strong><small>Conheça o jogo, seu universo e as principais funcionalidades.</small></span><b aria-hidden="true">↗</b></a><a class="mega-link" href="{{ url_for('store.game') }}">Explorar o jogo →</a><a class="mega-link" href="{{ url_for('store.how_it_works') }}">Como funciona o mercado →</a></section>
+          <section id="panel-download" role="tabpanel" aria-labelledby="tab-download" hidden><p class="eyebrow">Prepare sua jornada</p><h2>Jogue Eldoria.</h2><p>Confira a versão disponível, os requisitos e as instruções de instalação.</p><a class="mega-entry" href="{{ url_for('store.game') }}"><span class="mega-symbol" aria-hidden="true">↓</span><span><strong>Central de download</strong><small>Todas as informações para começar.</small></span><b aria-hidden="true">↗</b></a><a class="button" href="{{ url_for('store.download_game') }}">Baixar Jogo ↓</a></section>
+          <section id="panel-news" role="tabpanel" aria-labelledby="tab-news" hidden><p class="eyebrow">Fique por dentro</p><h2>O próximo capítulo.</h2><p>Acompanhe as novidades e atualizações de Eldoria.</p><a class="mega-link" href="{{ url_for('store.game') }}#novidades">Ver novidades →</a></section>
+          <section id="panel-market" role="tabpanel" aria-labelledby="tab-market" hidden><p class="eyebrow">Artefatos do reino</p><h2>Equipe sua aventura.</h2><a class="mega-entry" href="{{ url_for('store.shop') }}"><span class="mega-thumb items-thumb" aria-hidden="true"></span><span><strong>Todos os itens</strong><small>Armas, armaduras, acessórios, poções e cosméticos.</small></span><b aria-hidden="true">↗</b></a><a class="mega-link" href="{{ url_for('store.cart') }}">Minha bolsa →</a><a class="mega-link" href="{{ url_for('store.account') }}">Acompanhar meus pedidos →</a></section>
+          <section id="panel-gear" role="tabpanel" aria-labelledby="tab-gear" hidden><p class="eyebrow">Escolha seu equipamento</p><h2>Artefatos em destaque.</h2>{% for slug, name, description, position in [('espada-das-chamas-antigas','Espada das Chamas Antigas','Ataque +35 · Elemento Fogo','0% 0%'),('armadura-do-guardiao','Armadura do Guardião','Defesa +50','50% 0%'),('amuleto-da-lua','Amuleto da Lua','Mana +20 · Sorte +5','100% 0%')] %}<a class="mega-entry" href="{{ url_for('store.product_detail', slug=slug) }}"><span class="mega-thumb items-thumb" style="background-position:{{ position }}" aria-hidden="true"></span><span><strong>{{ name }}</strong><small>{{ description }}</small></span><b aria-hidden="true">↗</b></a>{% endfor %}</section>
+          <section id="panel-offers" role="tabpanel" aria-labelledby="tab-offers" hidden><p class="eyebrow">Prepare seu próximo passo</p><h2>Mais para sua jornada.</h2><a class="mega-entry" href="{{ url_for('store.product_detail', slug='pacote-inicial-do-aventureiro') }}"><span class="mega-thumb items-thumb" style="background-position:0% 100%" aria-hidden="true"></span><span><strong>Pacote Inicial do Aventureiro</strong><small>Conheça o conteúdo do pacote.</small></span><b aria-hidden="true">↗</b></a><a class="mega-link" href="{{ url_for('store.shop', filtro='ofertas') }}">Ver todas as ofertas →</a></section>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mega-backdrop" hidden></div>
+  <div class="flash-stack" aria-live="polite">
+    {% for category, message in get_flashed_messages(with_categories=true) %}<div class="flash flash-{{ category }}">{{ message }}</div>{% endfor %}
+  </div>
+  <main id="main-content">{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <div class="container footer-grid"><div><p class="brand">Mercado de Eldoria</p><p>Mercado de Eldoria comercializa itens digitais destinados ao jogo.</p></div>
+      <nav aria-label="Rodapé"><a href="{{ url_for('store.shop') }}">Loja</a><a href="{{ url_for('store.game') }}">O jogo</a><a href="{{ url_for('store.how_it_works') }}">Como funciona</a><a href="{{ url_for('store.support') }}">Suporte</a><a href="{{ url_for('store.terms') }}">Termos de uso</a><a href="{{ url_for('store.privacy') }}">Privacidade</a></nav>
+    </div><div class="copyright">© {{ current_year }} Mercado de Eldoria. Todos os direitos reservados.</div>
+  </footer>
+</body>
+</html>
+

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-hero container"><p class="eyebrow">Seus artefatos</p><h1>Bolsa do Aventureiro</h1><p>Revise os itens antes de continuar.</p></section>
+<section class="container section cart-layout" data-live-cart>
+{% if lines %}
+<div class="cart-list">{% for line in lines %}<article class="cart-line" data-cart-line data-price="{{ line.product.price_cents }}"><div class="product-art cart-art" style="background-position: {{ line.product.image_position }};{% if line.product.image %}background-image:url('{{ url_for('static',filename=line.product.image) }}');background-size:cover;background-position:center;{% endif %}"></div><div><h2>{{ line.product.name }}</h2><p>{{ line.product.rarity }} · {{ line.product.category }}</p><span>{{ line.product.price_cents|brl }} por unidade</span><br><strong data-line-total>{{ line.line_total|brl }}</strong></div><form action="{{ url_for('store.update_cart') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="slug" value="{{ line.product.slug }}"><label>Quantidade<input type="number" name="quantity" min="1" max="20" step="1" value="{{ line.quantity }}" required></label><noscript><button class="button button-outline" type="submit">Salvar quantidade</button></noscript></form></article>{% endfor %}</div>
+<aside class="panel order-summary"><h2>Resumo</h2><div><span>Subtotal</span><strong data-cart-total>{{ total|brl }}</strong></div><div><span>Total</span><strong data-cart-total>{{ total|brl }}</strong></div><p data-cart-status role="status" aria-live="polite"></p><a class="button button-block" data-cart-checkout href="{{ url_for('store.checkout') }}">Ir para o checkout</a><p>O pagamento será feito em ambiente seguro. Nunca informe dados do cartão diretamente nesta página.</p></aside>
+{% else %}<div class="empty-state"><h2>Sua Bolsa está vazia</h2><p>Explore a loja e escolha seus primeiros artefatos.</p><a class="button" href="{{ url_for('store.shop') }}">Explorar loja</a></div>{% endif %}
+</section><script defer src="{{ url_for('static', filename='cart.js') }}"></script>
+{% endblock %}

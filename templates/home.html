@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="realm-hero" aria-labelledby="realm-title">
+  <div class="realm-sky" aria-hidden="true"></div>
+  <div class="container realm-content">
+    <p class="eyebrow">CRÔNICAS DE ELDORIA</p>
+    <h1 id="realm-title">Um reino de mistérios.<br><em>Uma história sua.</em></h1>
+    <p class="lead">Entre no universo de Eldoria. Descubra o jogo e encontre os artefatos que acompanham sua próxima aventura.</p>
+    <div class="button-row"><a class="button" href="{{ url_for('store.game') }}">Conheça o jogo <span aria-hidden="true">↗</span></a><a class="button button-outline" href="{{ url_for('store.shop') }}">Explorar loja <span aria-hidden="true">→</span></a></div>
+    <a class="realm-scroll" href="#explorar">Explore o universo <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
+<section class="realm-strip"><div class="container"><span>SEU PRÓXIMO CAPÍTULO COMEÇA AQUI</span><a href="{{ url_for('store.game') }}">Descubra Eldoria →</a></div></section>
+<section class="section container" id="explorar">
+  <div class="section-heading"><div><p class="eyebrow">Escolha seu caminho</p><h2>O universo é seu para explorar.</h2></div><p>Da primeira descoberta ao próximo artefato.</p></div>
+  <div class="realm-paths">
+    <a class="realm-card realm-card-world" href="{{ url_for('store.game') }}"><div class="realm-card-art"></div><div class="realm-card-copy"><span class="eyebrow">01 / O JOGO</span><h3>Entre em Eldoria</h3><p>Conheça o universo, confira as novidades e encontre o download.</p><span class="text-link">Descobrir o jogo <span aria-hidden="true">↗</span></span></div></a>
+    <a class="realm-card realm-card-items" href="{{ url_for('store.shop') }}"><div class="realm-card-art"></div><div class="realm-card-copy"><span class="eyebrow">02 / O MERCADO</span><h3>Equipe sua jornada</h3><p>Armas, armaduras e artefatos para o seu próximo capítulo.</p><span class="text-link">Explorar itens <span aria-hidden="true">↗</span></span></div></a>
+  </div>
+</section>
+<section class="realm-offer"><div class="container realm-offer-inner"><div><p class="eyebrow">Tesouros do mercado</p><h2>Grandes jornadas.<br>Itens à altura.</h2><p class="lead">Encontre os destaques e as ofertas do reino em um só lugar.</p><a class="button" href="{{ url_for('store.shop', filtro='ofertas') }}">Ver ofertas →</a></div><div class="realm-item-showcase" role="img" aria-label="Arte dos equipamentos de Eldoria"></div></div></section>
+<section class="section container"><p class="eyebrow">Antes de partir</p><h2>Tudo para seguir sua jornada.</h2><div class="feature-grid"><article class="panel"><span class="realm-number">01</span><h3>Conheça o caminho</h3><p>Entenda como funciona a compra de itens digitais.</p><a class="text-link" href="{{ url_for('store.how_it_works') }}">Como funciona →</a></article><article class="panel"><span class="realm-number">02</span><h3>Sua conta, sua história</h3><p>Acompanhe os pedidos e solicitações na sua conta.</p><a class="text-link" href="{{ url_for('store.account') }}">Minha conta →</a></article><article class="panel"><span class="realm-number">03</span><h3>Ajuda na jornada</h3><p>Conte com a central de suporte quando precisar.</p><a class="text-link" href="{{ url_for('store.support') }}">Obter suporte →</a></article></div></section>
+{% endblock %}

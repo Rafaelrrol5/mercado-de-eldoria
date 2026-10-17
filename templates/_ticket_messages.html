@@ -1,0 +1,1 @@
+{% for message in messages %}<article class="panel ticket-message"><p class="eyebrow">{{ 'Equipe Eldoria' if message.role=='ADMIN' else message.name }} · {{ message.created_at[:16]|replace('T',' ') }}</p><p class="preserve-lines">{{ message.body }}</p></article>{% endfor %}

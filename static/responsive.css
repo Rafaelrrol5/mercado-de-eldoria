@@ -1,0 +1,160 @@
+/* Mobile refinements shared by the storefront and administration. */
+main,section,article,aside,form,.admin-main,.admin-columns>*,.cart-line>*,.header-inner>*{min-width:0}
+img,svg{max-width:100%}input,select,textarea{max-width:100%}textarea{resize:vertical}
+.admin-mobile-nav{display:none}
+@media(max-width:1000px){
+  .admin-sidebar .admin-desktop-nav{display:none}
+  .admin-mobile-nav{display:block;width:100%}
+  .admin-mobile-nav summary{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:10px 14px;cursor:pointer;border:1px solid var(--border);color:var(--gold-soft);list-style:none}
+  .admin-mobile-nav summary::-webkit-details-marker{display:none}
+  .admin-mobile-nav summary::after{content:'+';font-size:1.3rem}
+  .admin-mobile-nav[open] summary::after{content:'−'}
+  .admin-sidebar .admin-mobile-nav nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding-top:8px;gap:6px}
+  .admin-mobile-nav nav a{min-height:44px;align-items:center;overflow-wrap:anywhere}
+  .admin-main{margin:0 auto}
+  .admin-sidebar>.text-link{font-size:.82rem}
+}
+@media(max-width:768px){
+  input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea{font-size:16px!important}
+  input:not([type=checkbox]):not([type=radio]):not([type=range]),select{min-height:46px}
+  button,.button,.mobile-menu summary{touch-action:manipulation}
+  .button{white-space:normal;text-align:center;overflow-wrap:anywhere}
+  .mobile-menu summary,.mobile-menu nav a,.mobile-menu nav button,.mega-sidebar [role=tab],.mega-close{min-height:44px}
+  .mega-close{min-width:44px}
+  .mobile-menu nav{max-width:calc(100vw - 28px);max-height:calc(100dvh - 100px);overflow:auto;overscroll-behavior:contain}
+  .mega-navigation{overscroll-behavior:contain}
+  .mega-sidebar [role=tablist]{min-width:0;max-width:100%;scrollbar-width:thin}
+  .mega-entry>span:not(.mega-thumb):not(.mega-symbol){min-width:0;overflow-wrap:anywhere}
+  .mega-layout,.game-hero-grid,.hero-grid,.product-detail,.cart-layout,.checkout-grid,.account-grid{min-width:0}
+  .game-cover{min-height:230px}
+  .game-stats{grid-template-columns:1fr}
+  .game-stat strong,.account-grid dd,.record-list strong,.record-list p,.auth-card p,.admin-events p,.admin-main .panel p{overflow-wrap:anywhere}
+  .panel{padding:20px}
+  .page-hero{padding-top:38px;padding-bottom:8px}
+  .page-hero h1{font-size:clamp(2rem,8vw,3rem)}
+  .section{padding-block:38px}
+  .footer-grid nav a{display:flex;align-items:center;min-height:44px}
+  .flash-stack{top:86px;max-height:calc(100dvh - 110px);overflow:auto}
+  .flash{overflow-wrap:anywhere}
+  .auth-section{padding:36px 14px;min-height:calc(100dvh - 74px)}
+  .auth-card{padding:24px 20px}
+  .auth-card h1{overflow-wrap:anywhere}
+  .auth-card .field{margin-bottom:18px}
+  .password-control button{min-width:48px;min-height:48px}
+  .admin-columns{grid-template-columns:1fr}
+  .admin-table{max-width:100%;overscroll-behavior-x:contain;scrollbar-width:thin}
+  .admin-table table{min-width:500px}
+  .admin-table th,.admin-table td{padding:12px;vertical-align:top}
+  .admin-table td{max-width:260px;overflow-wrap:anywhere}
+  .admin-search{flex-direction:column;align-items:stretch}
+  .admin-search input,.admin-search select,.admin-search .field,.admin-search .button{width:100%;min-width:0}
+  .admin-search .button{min-height:48px}
+  .admin-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .admin-metrics strong{font-size:clamp(1.5rem,6vw,2.4rem)}
+  .finance-metrics strong{font-size:clamp(1.25rem,5vw,1.85rem)}
+  .admin-metrics .panel{padding:16px 12px}
+  .admin-metrics span{font-size:.8rem;overflow-wrap:anywhere}
+  .finance-chart{max-width:100%;overscroll-behavior-x:contain}
+  .admin-checks{display:grid;gap:10px}
+  .admin-checks label{display:flex;gap:12px;align-items:center;min-height:44px}
+  .admin-checks input{width:20px;height:20px}
+  .admin-main .button-row{display:grid;grid-template-columns:1fr;gap:12px}
+  .admin-main .button-row .button{width:100%}
+}
+@media(max-width:480px){
+  .header-inner{gap:8px}
+  .header-inner>.brand{font-size:.9rem;max-width:145px;line-height:1.25}
+  .header-actions{gap:10px;flex:none}
+  .bag-link{font-size:.8rem;min-height:44px}
+  .mobile-menu summary{padding:9px;font-size:.8rem}
+  .realm-content h1{font-size:clamp(2.2rem,10vw,3rem)}
+  .realm-hero{min-height:580px}
+  .realm-card h3{font-size:1.7rem}
+  .realm-card-copy{padding:22px}
+  .realm-card-art{height:200px}
+  .realm-item-showcase{min-height:220px}
+  .game-title{font-size:clamp(2rem,9vw,2.8rem);overflow-wrap:anywhere}
+  .game-hero{padding-block:36px}
+  .game-hero-grid{gap:28px}
+  .cart-line{grid-template-columns:72px minmax(0,1fr);padding:12px;gap:12px}
+  .cart-line h2{font-size:1.08rem;overflow-wrap:anywhere}
+  .cart-line p{margin:8px 0;font-size:.82rem}
+  .cart-line form{grid-column:1/-1;width:100%}
+  .cart-line form label{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.9rem}
+  .cart-line form input{max-width:110px}
+  .cart-line span{font-size:.82rem}
+  .order-summary{padding:20px}
+  .record-list article{align-items:flex-start;flex-direction:column;gap:8px}
+  .record-list article>div:last-child{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .attribute-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .attribute-grid dd{overflow-wrap:anywhere}
+  .footer-grid{gap:20px;padding-block:30px}
+  .footer-grid nav{grid-template-columns:1fr 1fr;gap:0 20px}
+  .admin-sidebar{padding:20px 14px 16px;gap:14px}
+  .admin-sidebar>.brand{padding-right:80px}
+  .admin-sidebar>form{right:14px;top:16px}
+  .admin-sidebar>form .button{padding:9px 14px;min-height:44px}
+  .admin-main{padding:24px 14px}
+  .admin-heading{margin-bottom:20px}
+  .admin-heading h1{font-size:2rem}
+  .admin-heading .eyebrow{font-size:.64rem}
+  .admin-body .flash{margin:12px 14px}
+  .admin-body .panel h2{font-size:1.4rem}
+}
+@media(max-width:350px){.finance-metrics,.admin-metrics{grid-template-columns:1fr}.header-inner>.brand{max-width:120px}.attribute-grid{grid-template-columns:1fr}}
+@media(hover:none){.button:hover,.product-card:hover,.realm-card:hover{transform:none}}
+/* Shared compatibility rules come last to keep breakpoint precedence stable. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:"Segoe UI",Arial,Helvetica,sans-serif}
+button,input,select,textarea{font-family:inherit}
+.container{width:calc(100% - 40px);max-width:1180px;margin-left:auto;margin-right:auto}
+.container.narrow,.narrow{width:calc(100% - 40px);max-width:760px;margin-left:auto;margin-right:auto}
+.site-header{-webkit-backdrop-filter:blur(16px)}
+.mobile-menu summary::-webkit-details-marker{display:none}
+.header-inner{gap:20px;flex-wrap:nowrap}
+.header-inner>.brand{flex:0 1 auto;line-height:1.25}
+.desktop-nav{flex:0 1 auto;gap:clamp(12px,1.6vw,24px);align-items:center}
+.desktop-nav a,.desktop-nav button{white-space:nowrap}
+.header-actions{flex:0 0 auto}
+.realm-content{padding-top:64px;padding-bottom:48px}
+.realm-content h1{font-size:3.5rem;font-size:clamp(2.3rem,4.8vw,4.5rem);max-width:760px;line-height:1.08;overflow-wrap:break-word}
+.realm-content .lead{max-width:540px;font-size:1.05rem}
+.realm-hero{min-height:570px}
+.realm-sky{background:linear-gradient(90deg,#080d19 0%,rgba(8,13,25,.94) 28%,rgba(8,13,25,.35) 78%),linear-gradient(0deg,#101419,transparent 48%),url('/static/eldoria-title.png') right center/auto 115% no-repeat}
+.realm-scroll{margin-top:40px}
+.realm-paths{grid-template-columns:repeat(2,minmax(0,1fr))}
+.feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.game-hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+.product-detail{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.shop-layout{grid-template-columns:230px minmax(0,1fr)}
+.cart-layout,.checkout-grid{grid-template-columns:minmax(0,1fr) 340px}
+.account-grid{grid-template-columns:280px minmax(0,1fr)}
+.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.product-card,.product-content,.catalog-toolbar,.mega-content,.mega-sidebar,.record-list article>div{min-width:0}
+.product-card h2,.product-card p,.product-detail h1,.product-detail .lead{overflow-wrap:break-word}
+.product-meta,.product-footer{flex-wrap:wrap;gap:8px}
+.product-art{height:0;padding-bottom:71.4286%;aspect-ratio:auto}
+.product-art-large{height:480px;max-height:75vw;padding-bottom:0}
+.cart-art{height:105px;padding-bottom:0}
+.purchase-form,.cart-line form,.section-heading{align-items:flex-end}
+.mega-navigation{max-height:calc(100vh - 86px);max-height:calc(100dvh - 86px)}
+.mega-backdrop{backdrop-filter:none}
+.admin-shell{grid-template-columns:235px minmax(0,1fr)}
+.admin-columns{grid-template-columns:repeat(2,minmax(0,1fr))}
+.admin-main{margin:0 auto;align-self:start}
+.admin-table{-webkit-overflow-scrolling:touch}
+.finance-chart{-webkit-overflow-scrolling:touch}
+.admin-body .field input[type=file]{width:100%;min-width:0;overflow:hidden}
+@media(max-width:1199px){.desktop-nav{display:none}.mobile-menu{display:block}.header-inner{min-height:74px}.mega-navigation{max-height:calc(100vh - 77px);max-height:calc(100dvh - 77px)}.mega-backdrop{top:77px}}
+@media(min-width:769px) and (max-width:1100px){.realm-content h1{max-width:650px;font-size:clamp(2.8rem,5.2vw,3.6rem)}.realm-hero{min-height:530px}}
+@media(max-width:1000px){.admin-shell{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:980px){.shop-layout,.game-hero-grid,.product-detail,.cart-layout,.checkout-grid{grid-template-columns:minmax(0,1fr)}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.account-grid{grid-template-columns:minmax(0,1fr)}.account-grid>aside{position:static}.order-summary{position:static}.realm-paths{gap:18px}.game-cover{min-height:260px}}
+@media(max-width:768px){.container,.narrow,.container.narrow{width:calc(100% - 28px)}.realm-paths,.feature-grid,.form-grid,.admin-columns{grid-template-columns:minmax(0,1fr)}.realm-hero{min-height:0}.realm-content{padding-top:56px;padding-bottom:36px}.realm-content h1{font-size:clamp(2.15rem,7.5vw,3.3rem);max-width:100%}.realm-content .lead{font-size:1rem}.realm-content .button-row{display:flex;flex-direction:column;align-items:stretch}.realm-sky{background:linear-gradient(0deg,#080d19 0%,rgba(8,13,25,.9) 40%,rgba(8,13,25,.4) 100%),url('/static/eldoria-title.png') center top/auto 100% no-repeat}.realm-content .eyebrow{margin-top:90px}.realm-scroll{margin-top:30px}.auth-section{min-height:calc(100vh - 74px);min-height:calc(100dvh - 74px)}.mobile-menu nav{max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px)}.flash-stack{max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px)}.game-title{font-size:clamp(2rem,7vw,3rem)}.game-hero{padding-top:40px;padding-bottom:40px}.purchase-form,.cart-line form{align-items:stretch}.admin-search{align-items:stretch}.game-download{flex-wrap:wrap}}
+@media(max-width:480px){.header-inner{gap:8px}.realm-content h1{font-size:clamp(2rem,9vw,2.8rem)}.realm-content .eyebrow{margin-top:72px}.realm-content{padding-top:36px}.realm-content .lead{font-size:.95rem}.realm-hero{min-height:0}.cart-line{grid-template-columns:72px minmax(0,1fr)}.purchase-form{flex-direction:column}.catalog-toolbar{align-items:stretch}.catalog-toolbar label{flex-wrap:wrap}.catalog-toolbar select{width:100%}}
+
+@supports (aspect-ratio:1 / 1){.product-art{height:auto;padding-bottom:0;aspect-ratio:1.4 / 1}.product-art-large{height:auto;max-height:none;aspect-ratio:1 / 1}.cart-art{height:auto;aspect-ratio:1.2 / 1}}
+@media(max-width:480px){.cart-art{max-height:72px}}
+.site-header{position:-webkit-sticky;position:sticky}
+.game-authentic-art{max-width:505px;width:100%;margin-left:auto;margin-right:auto;border:1px solid var(--border);background:#090e1a;box-shadow:var(--shadow)}.game-authentic-art img{width:100%;height:auto;display:block}.game-download small{overflow-wrap:anywhere}
+
+

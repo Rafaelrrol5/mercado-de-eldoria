@@ -1,0 +1,7 @@
+{% extends 'admin/manage_base.html' %}{% from 'admin/_macros.html' import order_list %}{% block management_content %}
+{% include 'admin/_period.html' %}<div data-live-region="dashboard">
+{% include 'admin/_finance_summary.html' %}
+<div class="admin-metrics">{% for key,label,endpoint in [('pending','Pedidos pendentes','management.orders'),('tickets','Chamados abertos','management.tickets'),('customers','Clientes','management.customers'),('orders','Pedidos registrados','management.orders')] %}<a class="panel" href="{{ url_for(endpoint) }}"><strong>{{ counts[key] }}</strong><span>{{ label }} →</span></a>{% endfor %}</div>
+<div class="admin-columns"><section><h2>Pedidos que precisam de atenção</h2>{{ order_list(orders) }}</section><section><h2>Chamados em aberto</h2><div class="record-list">{% for ticket in tickets %}<article><a class="text-link" href="{{ url_for('management.ticket_detail',identity=ticket.id) }}">{{ ticket.subject }} →</a><span class="status">{{ ticket_statuses.get(ticket.status,ticket.status) }}</span></article>{% else %}<p>Nenhum chamado pendente.</p>{% endfor %}</div></section></div>
+<section class="panel"><h2>Atividade administrativa recente</h2><div class="admin-events">{% for event in events %}<p>{{ event.created_at[:16]|replace('T',' ') }} · {{ event.name }} · {{ event.action }} · {{ event.target }}</p>{% else %}<p>As alterações feitas no painel serão registradas aqui.</p>{% endfor %}</div></section></div>{% endblock %}
+

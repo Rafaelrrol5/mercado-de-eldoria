@@ -1,0 +1,22 @@
+{
+  "filename": "Cronicas-de-Eldoria-1.8.1.exe",
+  "bytes": 306072720,
+  "sha256": "fc93f668103a7d9e6b0582ee7afc76963f85d0448821989483d714bc4aca6177",
+  "parts": [
+    {
+      "name": "eldoria-1.8.1.exe.part01",
+      "bytes": 103809024,
+      "sha256": "6c4837c4f7c349f8dfe53f1c4eda259ff9a70e3d45806c249ca60a27fd17e272"
+    },
+    {
+      "name": "eldoria-1.8.1.exe.part02",
+      "bytes": 103809024,
+      "sha256": "0ecd37d79a8d47e9fa22cece6d9a0f029f83c04f96eaac1c6d928a1b2c0cd7a1"
+    },
+    {
+      "name": "eldoria-1.8.1.exe.part03",
+      "bytes": 98454672,
+      "sha256": "830619a2f16a22a994130c1f31a66a2d9f84c42d4943fe1beb266e273793fb05"
+    }
+  ]
+}
